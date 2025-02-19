@@ -4,6 +4,6 @@
   <header></header>
 
   <main>
-    <h2>Home</h2>
+    <h2 class="font-bold text-2xl">Home</h2>
   </main>
 </template>
