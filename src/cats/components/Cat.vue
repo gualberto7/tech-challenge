@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, type PropType } from "vue";
 import { type CatInterface } from "../interfaces/Cat";
+import { useCatStore } from "../store/useCat";
 
 const props = defineProps({
   cat: {
@@ -9,10 +10,12 @@ const props = defineProps({
   },
 });
 
+const { addVote } = useCatStore();
+
 const catImg = computed(() => {
   const baseUrl = "https://cataas.com/cat";
   if (props.cat.tags.length > 0) {
-    return `${baseUrl}/${props.cat.tags[0]}`;
+    return `${baseUrl}/${props.cat.tags.join(",")}`;
   }
   return baseUrl;
 });
@@ -20,12 +23,29 @@ const catImg = computed(() => {
 
 <template>
   <div class="shadow-lg p-4 rounded-lg">
-    <h2>{{ cat.id }}</h2>
-    <div class="flex gap-2">
-      <span v-for="tag in cat.tags" :key="tag">{{ tag }}</span>
+    <div class="flex gap-2 mb-3">
+      <template v-if="cat.tags.length > 0">
+        <span v-for="tag in cat.tags" :key="tag" class="text-sm text-gray-500">
+          #{{ tag }}
+        </span>
+      </template>
+      <template v-else>
+        <span class="text-sm text-gray-500">No Tags</span>
+      </template>
     </div>
     <div class="w-full h-64">
       <img :src="catImg" alt="cat" class="w-full h-full object-cover" />
+    </div>
+    <div class="flex justify-between mt-3">
+      <span class="text-gray-700">votes: {{ cat.votes }}</span>
+      <div>
+        <button
+          @click="addVote(cat.id)"
+          class="bg-blue-500 text-white text-xs px-2 py-1 rounded-lg"
+        >
+          Vote
+        </button>
+      </div>
     </div>
   </div>
 </template>

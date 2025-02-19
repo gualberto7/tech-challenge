@@ -3,4 +3,5 @@ export interface CatInterface {
   createdAt: string;
   mimetype: string;
   tags: string[];
+  votes: number;
 }

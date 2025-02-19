@@ -1,23 +1,21 @@
 <script lang="ts" setup>
 import api from "@/api";
-import { onMounted, ref } from "vue";
-import type { CatInterface } from "../interfaces/Cat";
 import Cat from "./Cat.vue";
+import { onMounted } from "vue";
+import { useCatStore } from "../store/useCat";
 
-const cats = ref<CatInterface[]>([]);
+const catStore = useCatStore();
 
-onMounted(() => {
-  api.get("/cats").then((response) => {
-    console.log(response.data);
-    cats.value = response.data;
-  });
+onMounted(async () => {
+  const { data } = await api.get("/cats");
+  catStore.setCats(data);
 });
 </script>
 
 <template>
   <div>
     <div class="grid grid-cols-5 gap-10">
-      <Cat v-for="cat in cats" :key="cat.id" :cat="cat" />
+      <Cat v-for="cat in catStore.cats" :key="cat.id" :cat="cat" />
     </div>
   </div>
 </template>
