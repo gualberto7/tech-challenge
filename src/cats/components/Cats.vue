@@ -58,7 +58,9 @@ const handleFilter = () => {
       </div>
       <Button @click="getTrendiestCats" disabled> Trendiest Cats </Button>
     </div>
-    <div class="grid grid-cols-5 gap-10">
+    <div
+      class="grid gril-cols-1 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10"
+    >
       <Cat v-for="cat in catStore.cats" :key="cat.id" :cat="cat" />
     </div>
     <div class="flex justify-center mt-10">
