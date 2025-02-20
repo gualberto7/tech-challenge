@@ -4,6 +4,7 @@ import Cat from "./Cat.vue";
 import { onMounted, ref } from "vue";
 import { useCatStore } from "../store/useCat";
 import Button from "@/core/components/Button.vue";
+import * as CatService from "../services/catService";
 
 const filters = [
   { label: "all", value: "recent" },
@@ -18,8 +19,10 @@ onMounted(() => {
 });
 
 const getCats = async () => {
-  const { data } = await api.get(`/cats?skip=${catStore.cats.length}&limit=10`);
-  catStore.setCats(data);
+  const cats = await CatService.getCats(
+    `skip=${catStore.cats.length}&limit=10`
+  );
+  catStore.setCats(cats);
 };
 
 const handleFilter = () => {
