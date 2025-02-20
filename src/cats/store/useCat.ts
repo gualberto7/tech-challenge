@@ -4,6 +4,7 @@ import type { CatInterface } from "../interfaces/Cat";
 
 export const useCatStore = defineStore("cats", () => {
   const cats = ref<CatInterface[]>([]);
+  const filter = ref<string>("all");
 
   const setCats = (newCats: CatInterface[]) => {
     newCats.forEach((cat) => {
@@ -14,6 +15,20 @@ export const useCatStore = defineStore("cats", () => {
 
   const findCat = (id: string) => {
     return cats.value.find((cat) => cat.id === id);
+  };
+
+  const sortCats = (sort: string) => {
+    switch (sort) {
+      case "voted":
+        return cats.value.sort((a, b) => b.votes - a.votes);
+      case "recent":
+        return cats.value.sort(
+          (a, b) =>
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        );
+      default:
+        return cats.value;
+    }
   };
 
   const addVote = (id: string) => {
@@ -32,8 +47,10 @@ export const useCatStore = defineStore("cats", () => {
 
   return {
     cats,
+    filter,
     setCats,
     addVote,
     removeVote,
+    sortCats,
   };
 });
