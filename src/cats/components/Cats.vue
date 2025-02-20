@@ -3,6 +3,7 @@ import api from "@/api";
 import Cat from "./Cat.vue";
 import { onMounted, ref } from "vue";
 import { useCatStore } from "../store/useCat";
+import Button from "@/core/components/Button.vue";
 
 const filters = [
   { label: "all", value: "recent" },
@@ -49,12 +50,7 @@ const handleFilter = () => {
       <Cat v-for="cat in catStore.cats" :key="cat.id" :cat="cat" />
     </div>
     <div class="flex justify-center mt-10">
-      <button
-        @click="getCats"
-        class="bg-blue-500 text-white py-2 px-4 rounded shadow"
-      >
-        Load more
-      </button>
+      <Button @click="getCats"> Load more </Button>
     </div>
   </div>
 </template>
