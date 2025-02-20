@@ -12,10 +12,14 @@ const filters = [
 const catStore = useCatStore();
 const selectedFilter = ref("recent");
 
-onMounted(async () => {
-  //const { data } = await api.get("/cats");
-  //catStore.setCats(data);
+onMounted(() => {
+  getCats();
 });
+
+const getCats = async () => {
+  const { data } = await api.get(`/cats?skip=${catStore.cats.length}&limit=10`);
+  catStore.setCats(data);
+};
 
 const handleFilter = () => {
   console.log(selectedFilter.value);
@@ -43,6 +47,14 @@ const handleFilter = () => {
     </div>
     <div class="grid grid-cols-5 gap-10">
       <Cat v-for="cat in catStore.cats" :key="cat.id" :cat="cat" />
+    </div>
+    <div class="flex justify-center mt-10">
+      <button
+        @click="getCats"
+        class="bg-blue-500 text-white py-2 px-4 rounded shadow"
+      >
+        Load more
+      </button>
     </div>
   </div>
 </template>

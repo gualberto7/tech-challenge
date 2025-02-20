@@ -15,7 +15,7 @@ const { addVote } = useCatStore();
 const catImg = computed(() => {
   const baseUrl = "https://cataas.com/cat";
   if (props.cat.tags.length > 0) {
-    return `${baseUrl}/${props.cat.tags.join(",")}`;
+    return `${baseUrl}/${props.cat.id}`;
   }
   return baseUrl;
 });
@@ -23,17 +23,17 @@ const catImg = computed(() => {
 
 <template>
   <div class="shadow-lg p-4 rounded-lg">
-    <div class="flex gap-2 mb-3">
+    <div class="mb-3">
       <template v-if="cat.tags.length > 0">
         <span v-for="tag in cat.tags" :key="tag" class="text-sm text-gray-500">
           #{{ tag }}
         </span>
       </template>
       <template v-else>
-        <span class="text-sm text-gray-500">No Tags</span>
+        <span class="text-sm text-gray-500">No-Tags</span>
       </template>
     </div>
-    <div class="w-full h-64">
+    <div class="w-full h-52">
       <img :src="catImg" alt="cat" class="w-full h-full object-cover" />
     </div>
     <div class="flex justify-between mt-3">
