@@ -4,7 +4,7 @@ This project is a coding challenge that consists of a web page where users can v
 
 ## Architecture
 
-The architecture of this project follows a modular approach. Each module encapsulates its own functionality, including interfaces, store, services, and components. For example, the Cat module contains everything related to the cat functionality:
+The architecture of this project follows a modular approach. Each module encapsulates its own functionality, including interfaces, store, services, components... For example, the Cat module contains everything related to the cat functionality:
 
 - Interfaces: Defines the data structures used within the module.
 - Store: Manages the state specific to the module.
@@ -22,7 +22,7 @@ pnpm install
 ### Compile and Hot-Reload for Development
 
 ```sh
-pnpm dev
+pnpm run dev
 ```
 
 ### Type-Check, Compile and Minify for Production
