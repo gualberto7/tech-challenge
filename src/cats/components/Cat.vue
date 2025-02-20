@@ -2,6 +2,7 @@
 import { computed, type PropType } from "vue";
 import { type CatInterface } from "../interfaces/Cat";
 import { useCatStore } from "../store/useCat";
+import Button from "@/core/components/Button.vue";
 
 const props = defineProps({
   cat: {
@@ -39,12 +40,7 @@ const catImg = computed(() => {
     <div class="flex justify-between mt-3">
       <span class="text-gray-700">votes: {{ cat.votes }}</span>
       <div>
-        <button
-          @click="addVote(cat.id)"
-          class="bg-blue-500 text-white text-xs px-2 py-1 rounded-lg"
-        >
-          Vote
-        </button>
+        <Button size="xs" @click="addVote(cat.id)"> Vote </Button>
       </div>
     </div>
   </div>
