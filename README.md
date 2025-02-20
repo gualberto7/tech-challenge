@@ -1,18 +1,17 @@
-# labs-challenge
+# Coding challenge - Bob’s cats
 
-This template should help get you started developing with Vue 3 in Vite.
+This project is a coding challenge that consists of a web page where users can view images of cats and vote for their favorite cats. Additionally, users can sort the cats by the most voted ones.
 
-## Recommended IDE Setup
+## Architecture
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+The architecture of this project follows a modular approach. Each module encapsulates its own functionality, including interfaces, store, services, and components. For example, the Cat module contains everything related to the cat functionality:
 
-## Type Support for `.vue` Imports in TS
+- Interfaces: Defines the data structures used within the module.
+- Store: Manages the state specific to the module.
+- Services: Handles the business logic and API calls.
+- Components: Contains the Vue components specific to the module.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
+This modular architecture helps in maintaining a clean and organized codebase, making it easier to manage and scale the application.
 
 ## Project Setup
 
