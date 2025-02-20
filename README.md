@@ -2,6 +2,9 @@
 
 This project is a coding challenge that consists of a web page where users can view images of cats and vote for their favorite cats. Additionally, users can sort the cats by the most voted ones.
 
+![Screenshot 2025-02-20 at 10 37 38 AM](https://github.com/user-attachments/assets/4881f484-4f92-4f71-9fc7-9cdeb76d0672)
+
+
 ## Architecture
 
 The architecture of this project follows a modular approach. Each module encapsulates its own functionality, including interfaces, store, services, components... For example, the Cat module contains everything related to the cat functionality:
