@@ -52,5 +52,6 @@ export const useCatStore = defineStore("cats", () => {
     addVote,
     removeVote,
     sortCats,
+    findCat,
   };
 });

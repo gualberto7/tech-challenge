@@ -64,7 +64,7 @@ const handleFilter = () => {
       <Cat v-for="cat in catStore.cats" :key="cat.id" :cat="cat" />
     </div>
     <div class="flex justify-center mt-10">
-      <Button @click="getCats"> Load more </Button>
+      <Button id="load-more" @click="getCats"> Load more </Button>
     </div>
   </div>
 </template>

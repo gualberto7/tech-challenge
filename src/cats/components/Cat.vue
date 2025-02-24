@@ -40,7 +40,9 @@ const catImg = computed(() => {
     <div class="flex justify-between mt-3">
       <span class="text-gray-700">votes: {{ cat.votes }}</span>
       <div>
-        <Button size="xs" @click="addVote(cat.id)"> Vote </Button>
+        <Button id="vote-button" size="xs" @click="addVote(cat.id)">
+          Vote
+        </Button>
       </div>
     </div>
   </div>
